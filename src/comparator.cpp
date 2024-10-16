@@ -1,6 +1,3 @@
-// This source file contains :
-//Classes:
-//CSVFIle, CSVComparator and CSVTestSuite
 #include <iostream>
 #include <fstream>
 #include <sstream>
