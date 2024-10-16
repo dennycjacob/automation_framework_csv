@@ -1,4 +1,4 @@
-CSVFile
+# CSVFile #
 - data: vector<vector<string>>
 - headers: vector<string>
 - file_path: string
@@ -10,7 +10,7 @@ CSVFile
     - get_rowCount(): size_t
     - get_columnCount(): size_t
 
-Comparison
+# Comparison #
 - success: bool
 - message: string
 - Methods:
@@ -19,7 +19,7 @@ Comparison
     - getMessage(): string
     - printResult(): void
 
-Comparator
+# Comparator #
 - file1: const CSVFile&
 - file2: const CSVFile&
 - Methods:
@@ -31,10 +31,10 @@ Comparator
     - compare_duplicate_rows(): Comparison
     - compare_missing_values(): Comparison
 
-CSVFile
-The CSVFile class is responsible for managing the data from a CSV file. 
-It stores the data in a vector of vectors (data) and the headers separately (headers). 
-It provides methods to load the file, access the data and headers, and get row and column counts.
+## CSVFile ##
+- The CSVFile class is responsible for managing the data from a CSV file. 
+- It stores the data in a vector of vectors (data) and the headers separately (headers). 
+- It provides methods to load the file, access the data and headers, and get row and column counts.
 
 Variables used in CSVFile Class:
 
@@ -58,11 +58,11 @@ Method Explanations for CSVFile
 
     get_columnCount(): size_t - Returns the number of columns in the CSV file.
 
-Comparison
+## Comparison ##
 
-The Comparison class encapsulates the result of a comparison. 
-It has attributes to indicate whether the comparison was successful (success) and an associated message (message).
-Methods are provided to check the success status and print the result.
+- The Comparison class encapsulates the result of a comparison. 
+- It has attributes to indicate whether the comparison was successful (success) and an associated message (message).
+- Methods are provided to check the success status and print the result.
 
 Variables used in Comparison class
 
@@ -84,10 +84,10 @@ Methods used in Comparison
 
     message: string - Stores a message describing the outcome of the comparison.
 
-Comparator
+## Comparator ##
 
-The Comparator class compares two CSVFile objects (file1 and file2). 
-It provides various methods to cover our test scenarios 
+- The Comparator class compares two CSVFile objects (file1 and file2). 
+- It provides various methods to cover our test scenarios 
 
 Variable Explanations for Comparator
 
