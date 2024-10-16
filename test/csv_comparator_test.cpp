@@ -92,6 +92,14 @@ void tesCSVFileload() {
         result3.printResult();
         update_summary(result3,pass_count,fail_count);
 
+        Comparison result4 = comp.compare_missing_values();
+        result4.printResult();
+        update_summary(result4,pass_count,fail_count);
+
+        Comparison result5 = comp.detect_empty_file();
+        result5.printResult();
+        update_summary(result5,pass_count,fail_count);
+
     cout << "\nSummary of Results:" << endl;
     cout << "Number of PASS: " << pass_count << endl;
     cout << "Number of FAIL: " << fail_count << endl;

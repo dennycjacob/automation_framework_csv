@@ -20,5 +20,8 @@ class Comparator {
       Comparison compare_rowcount();
       Comparison compare_column_count();
       Comparison compare_cell_data();
+      Comparison detect_duplicate_rows();
+      Comparison compare_missing_values();
+      Comparison detect_empty_file();
      };
     #endif // CSVCOMPARATOR_H
