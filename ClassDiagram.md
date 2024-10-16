@@ -1,4 +1,4 @@
-# CSVFile #
+## CSVFile ##
 - data: vector<vector<string>>
 - headers: vector<string>
 - file_path: string
@@ -10,7 +10,7 @@
     - get_rowCount(): size_t
     - get_columnCount(): size_t
 
-# Comparison #
+## Comparison ##
 - success: bool
 - message: string
 - Methods:
@@ -19,11 +19,11 @@
     - getMessage(): string
     - printResult(): void
 
-# Comparator #
+## Comparator ##
 - file1: const CSVFile&
 - file2: const CSVFile&
 - Methods:
-    - CSVComparator(f1: const CSVFile&, f2: const CSVFile&)
+    - Comparator(f1: const CSVFile&, f2: const CSVFile&)
     - compare_headers(): Comparison
     - compare_rowcount(): Comparison
     - compare_column_count(): Comparison
