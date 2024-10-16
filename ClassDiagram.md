@@ -99,4 +99,4 @@ Variable Explanations for Comparator
 Methods used in Comparator class
 
     Comparator(f1: const CSVFile&, f2: const CSVFile&) - Constructor that initializes a Comparator object with two CSVFile objects.
-    -- The remaining functions in the Comparator class deals with the different test scenarios and is self explanatory---
+    -- The remaining functions in the Comparator class deals with the different test scenarios ---
