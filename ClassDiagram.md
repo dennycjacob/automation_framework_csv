@@ -31,6 +31,7 @@
     - compare_duplicate_rows(): Comparison
     - compare_missing_values(): Comparison
 
+# Methods and Variables in the classes #
 ## CSVFile ##
 - The CSVFile class is responsible for managing the data from a CSV file. 
 - It stores the data in a vector of vectors (data) and the headers separately (headers). 
