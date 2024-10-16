@@ -8,7 +8,9 @@
 #include <vector>
 #include "../include/csvfile.h"
 using namespace std;
-CSVFile::CSVFile(const string& file_path) : file_path(file_path) {}
+
+CSVFile::CSVFile(const string &file_path) : file_path(file_path) {
+}
 
 bool CSVFile::loadFile() {
     ifstream file(file_path);
@@ -18,7 +20,7 @@ bool CSVFile::loadFile() {
     }
     string line;
     bool isHeader = true;
-    while(getline(file, line)) {
+    while (getline(file, line)) {
         stringstream ss(line);
         string value;
         vector<string> row;
@@ -29,16 +31,15 @@ bool CSVFile::loadFile() {
         if (isHeader) {
             headers = row;
             isHeader = false;
-        }
-        else {
+        } else {
             data.push_back(row);
         }
     }
     file.close();
     return true;
 }
-const vector<vector<string>>& CSVFile::getData() const { return data;}
-const vector<string>& CSVFile::get_headers() const { return headers;}
-size_t CSVFile::get_rowCount() const { return data.size(); }
-size_t CSVFile::get_columnCount() const { return headers.size();}
 
+const vector<vector<string> > &CSVFile::getData() const { return data; }
+const vector<string> &CSVFile::get_headers() const { return headers; }
+size_t CSVFile::get_rowCount() const { return data.size(); }
+size_t CSVFile::get_columnCount() const { return headers.size(); }
