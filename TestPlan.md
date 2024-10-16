@@ -14,6 +14,7 @@ This document provides test plan for an automation framework for comparing CSVs.
 ## Prerequisites
 - Ensure all CSV files exist in the working directory.
 - The user should be able to select which CSV files to compare.
+- The input CSV files doesnt have duplicate rows in itself
 
 ## Test Scenarios
 

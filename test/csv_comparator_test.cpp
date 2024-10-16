@@ -100,6 +100,10 @@ void tesCSVFileload() {
         result5.printResult();
         update_summary(result5,pass_count,fail_count);
 
+        Comparison result6 = comp.detect_duplicate_rows();
+        result6.printResult();
+        update_summary(result6,pass_count,fail_count);
+
     cout << "\nSummary of Results:" << endl;
     cout << "Number of PASS: " << pass_count << endl;
     cout << "Number of FAIL: " << fail_count << endl;

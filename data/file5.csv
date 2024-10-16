@@ -1,8 +1,6 @@
 name,age,city
-Jack,26,
-Karen,32,Las Vegas
-Leo,45,Chicago
-name,age,city
 Alice,30,New York
-Bob,25,
-Charlie, ,Chicago
+Bob,,Los Angeles
+Charlie,35,
+,40,San Francisco
+Eve,28,Seattle

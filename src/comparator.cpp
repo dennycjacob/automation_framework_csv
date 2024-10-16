@@ -1,11 +1,11 @@
 // This source file contains :
 //Classes:
 //CSVFIle, CSVComparator and CSVTestSuite
-
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include<string>
+#include <set>
 #include<algorithm>
 #include <vector>
 #include "../include/csvfile.h"
@@ -23,21 +23,21 @@ using namespace std;
          if (file1.get_headers() == file2.get_headers()) {
              return Comparison(true , "  Headers are matching");
          }
-         return Comparison(false , "   Headers are not matching");
+         return Comparison(false , "  Headers are not matching");
     }
 
     Comparison Comparator::compare_rowcount()  {
         if (file1.get_rowCount() == file2.get_rowCount()) {
-            return Comparison(true , "   Row counts are matching");
+            return Comparison(true , "  Row counts are matching");
         }
-        return Comparison(false , "   Row counts are not matching");
+        return Comparison(false , "  Row counts are not matching");
     }
 
     Comparison Comparator::compare_column_count()  {
         if (file1.get_columnCount() == file2.get_columnCount()) {
-            return Comparison(true , "   Column counts  are matching");
+            return Comparison(true , "  Column counts  are matching");
         }
-        return Comparison(false , "   Column counts are not matching");
+        return Comparison(false , "  Column counts are not matching");
     }
 
     Comparison Comparator::compare_cell_data() {
@@ -49,10 +49,10 @@ using namespace std;
             const auto& row_from_file2 = file2.getData()[i];
             for (size_t j =0 ; j <row_from_file1.size(); ++j) {
                 if (row_from_file1[j] != row_from_file2[j]) {
-                    return Comparison(false , "   Mismatch found at row "+ to_string(i) +",column" + to_string(j) +"." );
+                    return Comparison(false , "  Mismatch found at row "+ to_string(i) +",column" + to_string(j) +"." );
                 }
             }
-            return Comparison(true , "   All cells are matching");
+            return Comparison(true , "  All cells are matching");
         }
     }
 
@@ -61,38 +61,58 @@ using namespace std;
             vector<vector<string>> data1 = file1.getData();
             vector<vector<string>> data2 = file2.getData();
             bool missing_values = false;
-            std::string missing_details;
-
+            string missing_details;
             // Check file1 for missing or null values
             for (size_t i = 0; i < data1.size(); ++i) {
                 for (size_t j = 0; j < data1[i].size(); ++j) {
                     if (data1[i][j].empty()) {
                         missing_values = true;
-                        missing_details += "Missing value found in file1 at row " + to_string(i) + ", column " + to_string(j) + " ";
+                        //missing_details += " Missing value found in file1 at row " + to_string(i) + ", column " + to_string(j) + "   ";
                     }
                 }
-
             }
-
             // Check file2 for missing or null values
             for (size_t i = 0; i < data2.size(); ++i) {
                 for (size_t j = 0; j < data2[i].size(); ++j) {
                     if (data2[i][j].empty()) {
                         missing_values = true;
-                        missing_details += "Missing value found in file2 at row " + to_string(i) + ", column " + to_string(j) + "";
+                       // missing_details += "\nMissing value found in file2 at row " + to_string(i) + ", column " + to_string(j) + "";
                     }
                 }
             }
-
             if (missing_values) {
                 return Comparison(false, "  Missing or null values detected" + missing_details);
             } else {
                 return Comparison(true, "  No missing or null values detected in the files.");
             }
-
         }
 
-        Comparison Comparator::detect_empty_file() {
+        Comparison Comparator::detect_duplicate_rows() {
+        set<vector<string>> file1_rows ;//hash to track file1 rows
+        for ( auto& row : file1.getData() )
+            file1_rows.insert(row);
+        bool duplicate_rows = false;
+
+        // Check file2 for duplicate occurences
+        for ( auto& row : file2.getData() ) {
+            if (file1_rows.find(row) != file1_rows.end()) {
+                duplicate_rows = true;
+                //for (size_t j = 0; j < row.size(); ++j) {
+                    //cout<<"duplicates are "+row[j]+";"<<endl;
+               // }
+            }
+
+            if (duplicate_rows) {
+                return Comparison(false, "  Duplicate rows detected in the files.");
+            } else {
+                return Comparison(true, "  Duplicate rows not detected in the files.");
+
+            }
+        }
+    }
+
+
+        Comparison Comparator::detect_empty_file(){
         // Check if file1 is empty
         if (file1.get_rowCount() == 0 || file1.get_columnCount() == 0) {
             return Comparison(false, "  File1 is empty.");
