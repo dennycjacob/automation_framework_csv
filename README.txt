@@ -1,4 +1,3 @@
-#Folder Structure#
 automation_framework/
 ├── include/
 │   ├── csvfile.h                 # Header file for CSVFile class
@@ -14,5 +13,4 @@ automation_framework/
     └── file3.csv
 |   └── file4.csv 
 |   └── file5.csv
-
 
